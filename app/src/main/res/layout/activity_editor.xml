@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF">
+
+        <com.google.android.material.appbar.AppBarLayout
+            app:elevation="0dp"
+            android:id="@+id/appBarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/editor_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
+                app:title="Editor" />
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <EditText
+            android:id="@+id/title_edittext"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/lato"
+            android:hint="add a title..."
+            android:textColor="#000000"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+            tools:text="Heading" />
+
+        <EditText
+            android:id="@+id/body_edittext"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="24dp"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/lato_light"
+            android:gravity="start"
+            android:hint="write content here.."
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title_edittext"
+            tools:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+            when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+             It has survived not only five centuries, but also the leap into electronic typesetting,
+             remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
+             sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like
+              Aldus PageMaker including versions of Lorem Ipsum" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
