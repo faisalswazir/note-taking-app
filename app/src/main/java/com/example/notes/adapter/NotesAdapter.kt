@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.marginTop
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -32,9 +34,14 @@ class NotesAdapter(val clickListener: NoteClickListener) : ListAdapter<Note, Not
 //            title_textview.text = item.title
 //            body_textview.text = item.body
 
+            //item.body.line
             if (item.title.length > 20){
                 title_textview.text   = item.title.substring(0,20) + "..."
+            }else if (item.title.isEmpty()){
+                // if title is empty it will not show empty textView
+                title_textview.visibility = View.GONE
             }else{
+                title_textview.visibility = View.VISIBLE
                 title_textview.text   = item.title
             }
 
