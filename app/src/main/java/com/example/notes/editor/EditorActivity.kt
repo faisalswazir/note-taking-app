@@ -65,12 +65,16 @@ class EditorActivity : AppCompatActivity() {
                         Toast.makeText(this,"Saved",Toast.LENGTH_SHORT).show()
                         //this.onBackPressed()
                     }else{
-                        viewModel.onInsert(
-                            binding.titleEdittext.text.toString().trim(),
-                            binding.bodyEdittext.text.toString().trim()
-                        )
-                        Toast.makeText(this,"Inserted",Toast.LENGTH_SHORT).show()
-                        this.onBackPressed()
+                        if (binding.titleEdittext.text.isEmpty() && binding.bodyEdittext.text.isEmpty()){
+                            Toast.makeText(this,"Can't save! the note is empty",Toast.LENGTH_SHORT).show()
+                        }else{
+                            viewModel.onInsert(
+                                binding.titleEdittext.text.toString().trim(),
+                                binding.bodyEdittext.text.toString().trim()
+                            )
+                            Toast.makeText(this,"Inserted",Toast.LENGTH_SHORT).show()
+                            this.onBackPressed()
+                        }
                     }
                 }
             }

@@ -89,7 +89,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|end"
                 android:layout_margin="32dp"
-                android:onClick="@{() -> allNotesViewModel.navigateToAddNote()}"
+                android:onClick="@{() -> allNotesViewModel.navigateToEditor()}"
                 android:src="@drawable/ic_baseline_add_24" />
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

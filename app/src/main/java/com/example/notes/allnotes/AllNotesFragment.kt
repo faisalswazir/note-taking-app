@@ -12,6 +12,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.notes.R
 import com.example.notes.adapter.NoteClickListener
 import com.example.notes.adapter.NotesAdapter
@@ -40,18 +41,18 @@ class AllNotesFragment : Fragment(),NoteClickListener {
             )
         viewModel = ViewModelProviders.of(this,viewModelFactory).get(AllNotesViewModel::class.java)
         binding.allNotesViewModel = viewModel
-        viewModel.navigateToAddNote.observe(viewLifecycleOwner, Observer {
+        viewModel.navigateToEditor.observe(viewLifecycleOwner, Observer {
             it?.let {
-//                findNavController().navigate(R.id.action_allNotesFragment_to_addNoteFragment)
-//                viewModel.doneNavigating()
                 startActivity(Intent(activity,EditorActivity::class.java))
+                viewModel.doneNavigating()
             }
         })
 
-        val gridLayoutManager = GridLayoutManager(context,2)
+        // val gridLayoutManager = GridLayoutManager(context,2)
+        val staggeredGridLayoutManager = StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
         val adapter = NotesAdapter(this)
         binding.recyclerView.adapter =adapter
-        binding.recyclerView.layoutManager = gridLayoutManager
+        binding.recyclerView.layoutManager = staggeredGridLayoutManager
         viewModel.allNotes.observe(viewLifecycleOwner, Observer {
             it?.let {
                 adapter.submitList(it)
@@ -78,21 +79,5 @@ class AllNotesFragment : Fragment(),NoteClickListener {
     override fun onClick(note: Note) {
         startActivity(Intent(activity,EditorActivity::class.java).putExtra(SELECTED_NOTE_ID_EXTRA,note.noteId))
     }
-
-//    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-//        inflater.inflate(R.menu.all_notes_menu,menu)
-//        super.onCreateOptionsMenu(menu, inflater)
-//    }
-//
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        when(item.itemId){
-//            R.id.delete_all_notes -> {
-//                Toast.makeText(context,"All notes deleted!",Toast.LENGTH_SHORT).show()
-//                viewModel.onClear()
-//            }
-//
-//        }
-//        return super.onOptionsItemSelected(item)
-//    }
 
 }

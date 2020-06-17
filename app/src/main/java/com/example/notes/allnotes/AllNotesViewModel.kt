@@ -16,16 +16,16 @@ class AllNotesViewModel(val database: NoteDao,
     //retrieve all notes for recycler view
     val allNotes = database.getAllNotes()
 
-    private val _navigateToAddNote= MutableLiveData<Boolean>()
-    val navigateToAddNote : LiveData<Boolean>
-        get() = _navigateToAddNote
+    private val _navigateToEditor= MutableLiveData<Boolean>()
+    val navigateToEditor : LiveData<Boolean>
+        get() = _navigateToEditor
 
-    fun navigateToAddNote(){
-        _navigateToAddNote.value = true
+    fun navigateToEditor(){
+        _navigateToEditor.value = true
     }
 
     fun doneNavigating(){
-        _navigateToAddNote.value = null
+        _navigateToEditor.value = null
     }
 
 
