@@ -16,7 +16,8 @@ class NotesAdapter(val clickListener: NoteClickListener) : ListAdapter<Note, Not
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item,parent,false)
         val height = parent.measuredHeight / 4
-        view.layoutParams.height = height
+        //view.layoutParams.height = height
+        view.minimumHeight = height
         return ViewHolder(view)
     }
 
@@ -28,8 +29,21 @@ class NotesAdapter(val clickListener: NoteClickListener) : ListAdapter<Note, Not
         val title_textview : TextView = view.findViewById(R.id.title_textview)
         val body_textview : TextView = view.findViewById(R.id.body_textview)
         fun bind(clickListener: NoteClickListener,item: Note){
-            title_textview.text = item.title
-            body_textview.text = item.body
+//            title_textview.text = item.title
+//            body_textview.text = item.body
+
+            if (item.title.length > 20){
+                title_textview.text   = item.title.substring(0,20) + "..."
+            }else{
+                title_textview.text   = item.title
+            }
+
+            if (item.body.length > 40){
+                body_textview.text   = item.body.substring(0,40) + "..."
+            }else{
+                body_textview.text   = item.body
+            }
+
             itemView.setOnClickListener{
                 clickListener.onClick(item)
             }
