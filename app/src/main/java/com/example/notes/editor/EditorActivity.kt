@@ -39,12 +39,14 @@ class EditorActivity : AppCompatActivity() {
             viewModel.selectedNote.observe(this, Observer {
                 binding.titleEdittext.apply {
                     setText(it.title)
-                    //no setSelection because bodyeditetxt will be won focus
+                    //no setSelection because bodyeditetxt will be on focus
                 }
                 binding.bodyEdittext.apply {
                     setText(it.body)
+
                     requestFocus()
                     setSelection(it.body.length)
+                    
                 }
             })
         }
