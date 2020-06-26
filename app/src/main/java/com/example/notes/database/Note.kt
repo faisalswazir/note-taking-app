@@ -11,5 +11,9 @@ data class Note(
     @ColumnInfo(name = "title")
     var title : String = "no_title",
     @ColumnInfo(name = "body")
-    var body : String = "no_body"
+    var body : String = "no_body",
+    @ColumnInfo(name = "date_created")
+    var dateCreated : Long = System.currentTimeMillis(),
+    @ColumnInfo(name = "date_modified")
+    var dateModified : Long = dateCreated
 )
