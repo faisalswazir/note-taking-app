@@ -29,6 +29,7 @@ class EditorActivityViewModel(val database: NoteDao,val selectedNoteId: Long) : 
             val note = database.getNoteToUpdate(selectedNoteId) ?: return@withContext
             note.title = newTitle
             note.body = newBody
+            note.dateModified = System.currentTimeMillis()
             database.update(note)
         }
     }
