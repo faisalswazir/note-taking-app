@@ -43,10 +43,10 @@ class EditorActivity : AppCompatActivity() {
                 }
                 binding.bodyEdittext.apply {
                     setText(it.body)
-
                     requestFocus()
+
                     setSelection(it.body.length)
-                    
+
                 }
             })
         }
