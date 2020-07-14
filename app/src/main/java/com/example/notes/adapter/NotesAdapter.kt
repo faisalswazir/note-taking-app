@@ -41,7 +41,11 @@ class NotesAdapter(val clickListener: NoteClickListener) : ListAdapter<Note, Not
                 title_textview.visibility = View.VISIBLE
                 title_textview.text   = item.title
             }
-
+            //if the text in body is very short the date textview will move up from the bottom corner and ruin the consistent look
+            //so im adding few lines to inscrease the short text to minimum of 4 lines
+            if (item.body.lines().size < 4){
+                item.body = item.body + "\n\n\n"
+            }
             body_textview.text   = item.body
             date_created_textview.text = "Created - " + convertLongToDateString(item.dateCreated)
             date_modified_textview.text = "Modified - " + convertLongToDateString(item.dateModified)
